@@ -1,22 +1,35 @@
 import datetime
+from typing import List
 
 from pydantic import BaseModel
 
+
 class Drugs(BaseModel):
-    IdDrugs: str
-    Drug: str
+    atccode: str
+    drug: str
+
+
+class DfDrugs(BaseModel):
+    df_dict: List[Drugs]
 
 
 class Pubmed(BaseModel):
-    IdPubmed: int
-    Title: str
-    Date: datetime.date
-    Journal: str
+    id: int
+    title: str
+    date: datetime.date
+    journal: str
+
+
+class DfPubmed(BaseModel):
+    df_dict: List[Pubmed]
 
 
 class ClinicalTrials(BaseModel):
-    IdClinicalTrials: str
-    ScientificTitle: str
-    Date: datetime.date
-    Journal: str
+    id: str
+    scientific_title: str
+    date: datetime.date
+    journal: str
 
+
+class DfClinicalTrials(BaseModel):
+    df_dict: List[ClinicalTrials]
